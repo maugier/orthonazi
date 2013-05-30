@@ -45,19 +45,28 @@ class OrthoNazi(SingleServerIRCBot):
         self.nazi_channels = channels
         self.speller = Speller("lang", lang)
         self.rl = RateLimiter(delay)
-        self.whitelist = {}
+        self.whitelist = {nick: True}
+
+    def do_whitelist(self, msg):
+        for word in re.findall(word_re, msg):
+            self.whitelist[word] = True
+            logging.info("Adding {0} to whitelist".format(word))
 
     def on_welcome(self, c, e):
         for chan in self.nazi_channels:
             c.join(chan)
 
+    def on_namreply(self, c, e):
+        self.do_whitelist(e.arguments[2])
+
+    def on_join(self, c, e):
+        self.do_whitelist(NickMask(e.source).nick)
+
     def on_pubmsg(self, c, e):
         message = e.arguments[0]
 
         if message.startswith("!whitelist "):
-            for word in re.findall(word_re, message[11:]):
-                self.whitelist[word] = True
-                logging.info("Adding {0} to whitelist".format(word))
+            self.do_whitelist(message[11:])
             return
 
         for word in re.findall(word_re, message):
