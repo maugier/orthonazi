@@ -27,7 +27,8 @@ insult_messages = [
     "'{0}'... mais tais-toi un peu, {1}, bougre d'extrait de crétin des Alpes.",
     ]
 
-word_re = re.compile('[^\W\d_]+', re.UNICODE)
+word_re = re.compile('^[^\W\d_]+$', re.UNICODE)
+space_re = re.compile(r'[\s,;!?]+', re.UNICODE)
 
 def RateLimiter(delay):
     cache = {}
@@ -43,7 +44,8 @@ def RateLimiter(delay):
 
     return recent
         
-        
+def get_words(message):
+    return [word for word in space_re.split(message) if word_re.match(word)]
 
 
 class OrthoNazi(SingleServerIRCBot):
@@ -68,7 +70,7 @@ class OrthoNazi(SingleServerIRCBot):
                 pickle.dump(self.whitelist, f)
 
     def do_whitelist(self, msg):
-        for word in re.findall(word_re, msg):
+        for word in get_words(msg):
             self.whitelist[word.lower()] = True
             logging.info("Adding {0} to whitelist".format(word))
             self.save()
@@ -90,7 +92,7 @@ class OrthoNazi(SingleServerIRCBot):
             self.do_whitelist(message[11:])
             return
 
-        for word in re.findall(word_re, message):
+        for word in get_words(message):
             if word[0].isupper() or word.lower() in self.whitelist or self.speller.check(word):
                 continue
             if self.rl(e.source):
