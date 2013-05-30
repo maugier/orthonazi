@@ -28,7 +28,7 @@ insult_messages = [
     ]
 
 word_re = re.compile('^[^\W\d_]+$', re.UNICODE)
-space_re = re.compile(r'[\s,;!?]+', re.UNICODE)
+space_re = re.compile(r'[][(){}\s,;!?]+', re.UNICODE)
 
 def RateLimiter(delay):
     cache = {}
