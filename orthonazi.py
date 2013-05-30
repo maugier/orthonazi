@@ -22,20 +22,19 @@ insult_messages = [
 
 word_re = re.compile('[^\W\d_]+', re.UNICODE)
 
-class RateLimiter(object):
-    #TODO add a deque to prune old entries to prevent unbounded growth
-    def __init__(self, delay):
-        self.cache = {}
-        self.delay = delay
+def RateLimiter(delay):
+    cache = {}
 
-    def recent(self, key):
+    def recent(key):
         now = time()
 
-        if key in self.cache and (now - self.cache[key]) < self.delay:
+        if key in cache and (now - cache[key]) < delay:
             return True
         
-        self.cache[key] = now
+        cache[key] = now
         return False
+
+    return recent
         
         
 
@@ -87,7 +86,7 @@ class OrthoNazi(SingleServerIRCBot):
         for word in re.findall(word_re, message):
             if word in self.whitelist or self.speller.check(word):
                 continue
-            if self.rl.recent(e.source):
+            if self.rl(e.source):
                 logging.info("Grace time allowed to {0}".format(e.source))
                 break
 
