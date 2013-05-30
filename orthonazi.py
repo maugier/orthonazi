@@ -2,6 +2,7 @@
 
 from aspell import Speller
 from irc.bot import SingleServerIRCBot, ServerSpec
+from irc.client import NickMask
 from random import choice
 from time import time
 import re
@@ -56,7 +57,7 @@ class OrthoNazi(SingleServerIRCBot):
             if not (word in self.whitelist
                     or self.rl.recent(e.source)
                     or self.speller.check(word)):
-                reply = choice(insult_messages).format(word, e.source)
+                reply = choice(insult_messages).format(word, NickMask(e.source).nick)
                 c.privmsg(e.target, reply)
                 break
 
