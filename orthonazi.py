@@ -7,6 +7,7 @@ from random import choice
 from time import time
 import re
 import logging
+import pickle
 
 
 insult_messages = [
@@ -40,17 +41,31 @@ class RateLimiter(object):
 
 
 class OrthoNazi(SingleServerIRCBot):
-    def __init__(self, server_list, nick="OrthoNazi", lang="fr_FR", channels=["#test"], delay=300, **params):
+    def __init__(self, server_list, nick="OrthoNazi", lang="fr_FR", 
+                 channels=["#test"], whitelist_path=None, delay=300, **params):
         super().__init__(server_list, nick, "OrthoNazi", **params)
         self.nazi_channels = channels
         self.speller = Speller("lang", lang)
         self.rl = RateLimiter(delay)
+        self.whitelist_path = whitelist_path
+        try:
+            with open(whitelist_path) as f:
+                self.whitelist = pickle.load(f)
+        except:
+            self.whitelist = {}
         self.whitelist = {nick: True}
+            
+
+    def save(self):
+        if self.whitelist_path is not None:
+            with open(self.whitelist_path, "wb") as f:
+                pickle.dump(self.whitelist, f)
 
     def do_whitelist(self, msg):
         for word in re.findall(word_re, msg):
             self.whitelist[word] = True
             logging.info("Adding {0} to whitelist".format(word))
+            self.save()
 
     def on_welcome(self, c, e):
         for chan in self.nazi_channels:
