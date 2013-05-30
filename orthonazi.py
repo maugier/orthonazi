@@ -29,7 +29,7 @@ class RateLimiter(object):
     def recent(self, key):
         now = time()
 
-        if key in self.cache and (now - cache[key]) < self.delay:
+        if key in self.cache and (now - self.cache[key]) < self.delay:
             return True
         
         self.cache[key] = now
