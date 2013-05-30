@@ -14,11 +14,18 @@ insult_messages = [
     "Non, {1} '{0}' n'existe pas dans la langue de Molière, désolé.",
     "Va t'acheter un dictionnaire, {1}, '{0}' n'est pas français.",
     "Apprends à écrire, tête de noeud, on ne dit pas '{0}'.",
-    "'{0}', lol. Quel idiot ce {1}.",
+    "'{0}', lol. Imbécile que tu fais, {1}.",
     "Toi y-en-a bien parler la France, dis-donc, {1}. '{0}', VRAIMENT ?",
     "{1}: on ne dit PAS '{0}', bordel.",
-    "'{0}'... mais qu'il est con celui-là.",
-    "Je suis un Ortograph Nazi et j'emmerde {1}, mais on ne dit pas '{0}'"]
+    "'{0}'... c'est dur d'être aussi con, vraiment.",
+    "Je suis un Ortograph Nazi et j'emmerde {1}, on ne dit pas '{0}'",
+    "{1}, t'es débile ou tu le fais exprès ? '{0}', franchement...",
+    "Cotisons-nous pour offrir un Bescherelle à {1}, parce que dire des trucs comme '{0}'...",
+    "'{0}'... tes profs de français se retournent dans leur tombe à l'heure qu'il est, {1}.",
+    "Et le trophée de l'illettré de la semaine revient à {1} et son magnifique '{0}'",
+    "{1}, on ne dit pas '{0}', espèce de porc-epic mal embouché",
+    "'{0}'... mais tais-toi un peu, {1}, bougre d'extrait de crétin des Alpes.",
+    ]
 
 word_re = re.compile('[^\W\d_]+', re.UNICODE)
 
