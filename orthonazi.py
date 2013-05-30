@@ -53,13 +53,23 @@ class OrthoNazi(SingleServerIRCBot):
 
     def on_pubmsg(self, c, e):
         message = e.arguments[0]
+
+        if message.startswith("!whitelist "):
+            for word in re.findall(word_re, message[11:]):
+                self.whitelist[word] = True
+                logging.info("Adding {0} to whitelist".format(word))
+            return
+
         for word in re.findall(word_re, message):
-            if not (word in self.whitelist
-                    or self.rl.recent(e.source)
-                    or self.speller.check(word)):
-                reply = choice(insult_messages).format(word, NickMask(e.source).nick)
-                c.privmsg(e.target, reply)
+            if word in self.whitelist or self.speller.check(word):
+                continue
+            if self.rl.recent(e.source):
+                logging.info("Grace time allowed to {0}".format(e.source))
                 break
+
+            reply = choice(insult_messages).format(word, NickMask(e.source).nick)
+            c.privmsg(e.target, reply)
+            break
 
     def on_nicknameinuse(self, c, e):
         c.nick(c.get_nickname() + "_")
