@@ -52,7 +52,7 @@ class OrthoNazi(SingleServerIRCBot):
                 self.whitelist = pickle.load(f)
         except:
             self.whitelist = {}
-        self.whitelist = {nick: True}
+        self.whitelist = {nick.lower(): True}
             
 
     def save(self):
@@ -62,7 +62,7 @@ class OrthoNazi(SingleServerIRCBot):
 
     def do_whitelist(self, msg):
         for word in re.findall(word_re, msg):
-            self.whitelist[word] = True
+            self.whitelist[word.lower()] = True
             logging.info("Adding {0} to whitelist".format(word))
             self.save()
 
@@ -84,7 +84,7 @@ class OrthoNazi(SingleServerIRCBot):
             return
 
         for word in re.findall(word_re, message):
-            if word in self.whitelist or self.speller.check(word):
+            if word[0].isupper() or word.lower() in self.whitelist or self.speller.check(word):
                 continue
             if self.rl(e.source):
                 logging.info("Grace time allowed to {0}".format(e.source))
