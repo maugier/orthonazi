@@ -1,0 +1,13 @@
+
+OrthoNazi 0.1
+=============
+
+
+1.) Requirements:
+
+  - irc (http://bitbucket.org/jaraco/irc/)
+  - aspell (http://http://0x80.pl/proj/aspell-python)
+
+2.) Usage:
+
+Read the source and edit at will :)
