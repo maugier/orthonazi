@@ -11,4 +11,15 @@ An IRC Bot to insult people who make orthography mistakes
 
 2.) Usage:
 
-Read the source and edit at will :)
+Create a bot script like so:
+
+    #!/usr/bin/env python3
+
+    import orthonazi
+
+    servers = [('irc.server.com', 6667)]
+    bot = orthonazi.OrthoNazi(servers, channels=["#mychannel"], delay=600, whitelist_path="./whitelist.pickle")
+    bot.start()
+
+Refer to the source for more options. Without 'whitelist_path', the whitelist will be discarded between runs.
+Use 'delay' to change the grace time between insult messages
