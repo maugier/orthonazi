@@ -25,6 +25,12 @@ insult_messages = [
     "Et le trophée de l'illettré de la semaine revient à {1} et son magnifique '{0}'",
     "{1}, on ne dit pas '{0}', espèce de porc-épic mal embouché",
     "'{0}'... mais tais-toi un peu, {1}, bougre d'extrait de crétin des Alpes.",
+    "Infâme patte de poulet prussienne en crinoline, {1} n'écrivez plus jamais {0} sous mes yeux !",
+    "{1}, vil personnage... « {0} » , vraiment ?!",
+    "Le fouet, le fouet, qu'on m'apporte un fouet pour {1}, l'impie qui écrivit {0} !",
+    "{1}... La majeure en est inepte, la mineure impertinente, et la conclusion ridicule ! On ne peut dire {0}, non, vraiment.",
+    "Plutôt que d'accorder, {1}, qu'il faille dire «{0}» j'accorderais que datur vacuum in rerum natura, et que je suis en java !",
+
     ]
 
 nick_re = re.compile('[^\W]+', re.UNICODE)
