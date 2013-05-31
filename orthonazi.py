@@ -46,7 +46,7 @@ def RateLimiter(delay):
     return recent
         
 def get_words(message):
-    return [word for word in space_re.split(message) if word_re.match(word)]
+    return [word for word in space_re.split(message) if len(word) > 3 and word_re.match(word)]
 
 
 class OrthoNazi(SingleServerIRCBot):
