@@ -23,7 +23,7 @@ insult_messages = [
     "Cotisons-nous pour offrir un Bescherelle à {1}, parce que dire des trucs comme '{0}'...",
     "'{0}'... tes profs de français se retournent dans leur tombe à l'heure qu'il est, {1}.",
     "Et le trophée de l'illettré de la semaine revient à {1} et son magnifique '{0}'",
-    "{1}, on ne dit pas '{0}', espèce de porc-epic mal embouché",
+    "{1}, on ne dit pas '{0}', espèce de porc-épic mal embouché",
     "'{0}'... mais tais-toi un peu, {1}, bougre d'extrait de crétin des Alpes.",
     ]
 
@@ -50,16 +50,17 @@ def get_words(message):
 
 
 class OrthoNazi(SingleServerIRCBot):
-    def __init__(self, server_list, nick="OrthoNazi", lang="fr_FR", 
+    def __init__(self, server_list, nick="OrthoNazi", langs=["fr_FR", "en_US"],
                  channels=["#test"], whitelist_path=None, delay=300, **params):
         super().__init__(server_list, nick, "OrthoNazi", **params)
         self.nazi_channels = channels
-        self.speller = Speller("lang", lang)
+        self.spellers = [Speller("lang", lang) for lang in langs]
         self.rl = RateLimiter(delay)
         self.whitelist_path = whitelist_path
         try:
             with open(whitelist_path) as f:
                 self.whitelist = pickle.load(f)
+                logging.info("Whitelist loaded with {0} words".format(len(self.whitelist)))
         except:
             self.whitelist = {}
         self.whitelist = {nick.lower(): True}
@@ -75,6 +76,11 @@ class OrthoNazi(SingleServerIRCBot):
             self.whitelist[word.lower()] = True
             logging.info("Adding {0} to whitelist".format(word))
             self.save()
+
+    def check_word(self, word):
+        return (word[0].isupper() 
+                or word.lower() in self.whitelist 
+                or any([s.check(word) for s in self.spellers]))
 
     def on_welcome(self, c, e):
         for chan in self.nazi_channels:
@@ -98,7 +104,7 @@ class OrthoNazi(SingleServerIRCBot):
             return
 
         for word in get_words(message):
-            if word[0].isupper() or word.lower() in self.whitelist or self.speller.check(word):
+            if self.check_word(word):
                 continue
             if self.rl(e.source):
                 logging.info("Grace time allowed to {0}".format(e.source))
