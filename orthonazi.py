@@ -27,6 +27,7 @@ insult_messages = [
     "'{0}'... mais tais-toi un peu, {1}, bougre d'extrait de crétin des Alpes.",
     ]
 
+nick_re = re.compile('[^\W]+', re.UNICODE)
 word_re = re.compile('^[^\W\d_]+$', re.UNICODE)
 space_re = re.compile(r'[][(){}\s,;!?]+', re.UNICODE)
 
@@ -80,7 +81,8 @@ class OrthoNazi(SingleServerIRCBot):
             c.join(chan)
 
     def on_namreply(self, c, e):
-        self.do_whitelist(e.arguments[2])
+        for nick in nick_re.findall(e.arguments[2]):
+            self.do_whitelist(nick)
 
     def on_join(self, c, e):
         self.do_whitelist(NickMask(e.source).nick)
