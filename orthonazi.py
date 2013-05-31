@@ -86,6 +86,9 @@ class OrthoNazi(SingleServerIRCBot):
 
     def on_join(self, c, e):
         self.do_whitelist(NickMask(e.source).nick)
+        
+    def on_nick(self, c, e):
+        self.do_whitelist(e.target)
 
     def on_pubmsg(self, c, e):
         message = e.arguments[0]
