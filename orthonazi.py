@@ -29,7 +29,7 @@ insult_messages = [
     "{1}, vil personnage... « {0} » , vraiment ?!",
     "Le fouet, le fouet, qu'on m'apporte un fouet pour {1}, l'impie qui écrivit {0} !",
     "{1}... La majeure en est inepte, la mineure impertinente, et la conclusion ridicule ! On ne peut dire {0}, non, vraiment.",
-    "Plutôt que d'accorder, {1}, qu'il faille dire «{0}» j'accorderais que datur vacuum in rerum natura, et que je suis en java !",
+    "Plutôt que d'accorder, {1}, qu'il faille dire « {0} » j'accorderais que datur vacuum in rerum natura, et que je suis en java !",
 
     ]
 
