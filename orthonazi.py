@@ -18,7 +18,7 @@ insult_messages = [
     "Toi y-en-a bien parler la France, dis-donc, {1}. '{0}', VRAIMENT ?",
     "{1}: on ne dit PAS '{0}', bordel.",
     "'{0}'... c'est dur d'être aussi con, vraiment.",
-    "Je suis un Ortograph Nazi et j'emmerde {1}, on ne dit pas '{0}'",
+    "Je suis un Ortograph Nazi et j'emmerde {1}, on ne dit pas '{0}'.",
     "{1}, t'es débile ou tu le fais exprès ? '{0}', franchement...",
     "Cotisons-nous pour offrir un Bescherelle à {1}, parce que dire des trucs comme '{0}'...",
     "'{0}'... tes profs de français se retournent dans leur tombe à l'heure qu'il est, {1}.",
