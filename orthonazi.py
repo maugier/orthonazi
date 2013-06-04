@@ -12,6 +12,8 @@ import pickle
 
 insult_messages = [
     "Non, {1} '{0}' n'existe pas dans la langue de Molière, désolé.",
+    "Je crois qu'on achève les {0} qui écrive {1}",
+    "{1} vient de perdre son temps à parler.",
     "Va t'acheter un dictionnaire, {1}, '{0}' n'est pas français.",
     "Apprends à écrire, tête de noeud, on ne dit pas '{0}'.",
     "'{0}', lol. Imbécile que tu fais, {1}.",
