@@ -67,7 +67,8 @@ class OrthoNazi(SingleServerIRCBot):
             with open(whitelist_path) as f:
                 self.whitelist = pickle.load(f)
                 logging.info("Whitelist loaded with {0} words".format(len(self.whitelist)))
-        except:
+        except Exception as e:
+            logging.warning("Failed to load whitelist: {0}".format(e))
             self.whitelist = {}
         self.whitelist = {nick.lower(): True}
             
