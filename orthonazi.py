@@ -63,19 +63,23 @@ class OrthoNazi(SingleServerIRCBot):
         self.spellers = [Speller("lang", lang) for lang in langs]
         self.rl = RateLimiter(delay)
         self.whitelist_path = whitelist_path
-        try:
-            with open(whitelist_path) as f:
-                self.whitelist = pickle.load(f)
-                logging.info("Whitelist loaded with {0} words".format(len(self.whitelist)))
-        except:
-            self.whitelist = {}
-        self.whitelist[nick.lower()] = True
+        self.whitelist = {nick.lower(): True}
+        self.load()
             
+    def load(self):
+        try:
+            with open(self.whitelist_path) as f:
+                for line in f:
+                    self.whitelist[line.rstrip()] = True
+            logging.info("Whitelist loaded with {0} words".format(len(self.whitelist)))
+        except Exception as e:
+            logging.warning("Failed to load whitelist: {0}".format(e))
 
     def save(self):
         if self.whitelist_path is not None:
-            with open(self.whitelist_path, "wb") as f:
-                pickle.dump(self.whitelist, f)
+            with open(self.whitelist_path, "w") as f:
+                for l in self.whitelist:
+                    f.write(l + '\n')
 
     def do_whitelist(self, msg):
         for word in get_words(msg):
