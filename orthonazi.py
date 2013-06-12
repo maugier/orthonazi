@@ -25,12 +25,20 @@ insult_messages = [
     "Et le trophée de l'illettré de la semaine revient à {1} et son magnifique '{0}'",
     "{1}, on ne dit pas '{0}', espèce de porc-épic mal embouché",
     "'{0}'... mais tais-toi un peu, {1}, bougre d'extrait de crétin des Alpes.",
+    "Assez, {1}, pauvre Polichinelle analphabète, avec tes '{0}'",
     "Infâme patte de poulet prussienne en crinoline, {1} n'écrivez plus jamais {0} sous mes yeux !",
     "{1}, vil personnage... « {0} » , vraiment ?!",
     "Le fouet, le fouet, qu'on m'apporte un fouet pour {1}, l'impie qui écrivit {0} !",
     "{1}... La majeure en est inepte, la mineure impertinente, et la conclusion ridicule ! On ne peut dire {0}, non, vraiment.",
     "Plutôt que d'accorder, {1}, qu'il faille dire « {0} » j'accorderais que datur vacuum in rerum natura, et que je suis en java !",
-
+    "Décidément, mon chat est plus doué que {1} en français, parce que '{0}'...",
+    "{1} n'est pas loin de mériter une médaille pour son ineptie. '{0}' ?",
+    "{1}: Maraud, faquin, butor de pied plat ridicule ! '{0}'...",
+    "Tiens, on dirait BlackGyver quand {1} parle... '{0}'",
+    "ERREUR: {1}: Cerveau non trouvé. Pas étonnant, à le lire ('{0}'...).",
+    "'{0}'... je me sens sale, rien que de lire {1}.",
+    "Pitié, quelqu'un, faites taire {1}... qui pourrait sinon continuer à dire des aberrations comme '{0}'",
+    "En l'occurrence, l'imbécillité de {1} n'est pas un dilemme étymologique, avec ses superbes '{0}'",
     ]
 
 nick_re = re.compile('[^\W]+', re.UNICODE)
