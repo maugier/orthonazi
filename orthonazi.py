@@ -36,6 +36,7 @@ insult_messages = [
 nick_re = re.compile('[^\W]+', re.UNICODE)
 word_re = re.compile('^[^\W\d_]+$', re.UNICODE)
 space_re = re.compile(r'[][(){}\s,;!?]+', re.UNICODE)
+trump_re = re.compile(r'\(.*gueule.*\)', re.UNICODE)
 
 def RateLimiter(delay):
     cache = {}
@@ -121,6 +122,10 @@ class OrthoNazi(SingleServerIRCBot):
 
         elif message.startswith("!blacklist "):
             self.do_blacklist(message[11:])
+            return
+
+        elif trump_re.search(message):
+            logging.info("{0} used trump card".format(e.source))
             return
 
         for word in get_words(message):
