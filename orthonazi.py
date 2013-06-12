@@ -85,7 +85,13 @@ class OrthoNazi(SingleServerIRCBot):
         for word in get_words(msg):
             self.whitelist[word.lower()] = True
             logging.info("Adding {0} to whitelist".format(word))
-            self.save()
+        self.save()
+
+    def do_blacklist(self, msg):
+        for word in get_words(msg):
+            del self.whitelist[word.lower()]
+            logging.info("Removing {0} from whitelist".format(word))
+        self.save()
 
     def check_word(self, word):
         return (word[0].isupper() 
@@ -111,6 +117,10 @@ class OrthoNazi(SingleServerIRCBot):
 
         if message.startswith("!whitelist "):
             self.do_whitelist(message[11:])
+            return
+
+        elif message.startswith("!blacklist "):
+            self.do_blacklist(message[11:])
             return
 
         for word in get_words(message):
