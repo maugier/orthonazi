@@ -69,7 +69,7 @@ class OrthoNazi(SingleServerIRCBot):
                 logging.info("Whitelist loaded with {0} words".format(len(self.whitelist)))
         except:
             self.whitelist = {}
-        self.whitelist = {nick.lower(): True}
+        self.whitelist[nick.lower()] = True
             
 
     def save(self):
