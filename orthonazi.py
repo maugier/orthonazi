@@ -21,7 +21,7 @@ insult_messages = [
     "Je suis un Ortograph Nazi et j'emmerde {1}, on ne dit pas '{0}'.",
     "{1}, t'es débile ou tu le fais exprès ? '{0}', franchement...",
     "Cotisons-nous pour offrir un Bescherelle à {1}, parce que dire des trucs comme '{0}'...",
-    "'{0}'... tes profs de français se retournent dans leur tombe à l'heure qu'il est, {1}.",
+    "'{0}'... tes profs de français se retournent dans leurs tombes à l'heure qu'il est, {1}.",
     "Et le trophée de l'illettré de la semaine revient à {1} et son magnifique '{0}'",
     "{1}, on ne dit pas '{0}', espèce de porc-épic mal embouché",
     "'{0}'... mais tais-toi un peu, {1}, bougre d'extrait de crétin des Alpes.",
