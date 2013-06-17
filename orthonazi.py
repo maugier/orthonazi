@@ -65,7 +65,6 @@ def RateLimiter(delay):
 def get_words(message):
     return [word for word in space_re.split(message) if len(word) > 3 and word_re.match(word)]
 
-
 class OrthoNazi(SingleServerIRCBot):
     def __init__(self, server_list, nick="OrthoNazi", langs=["fr_FR", "en_US"],
                  channels=["#test"], whitelist_path=None, delay=300, 
@@ -137,12 +136,17 @@ class OrthoNazi(SingleServerIRCBot):
     def on_pubmsg(self, c, e):
         message = e.arguments[0]
 
+        def by_oper():
+            return self.channels[e.target].is_oper(NickMask(e.source).nick)
+
         if message.startswith("!whitelist "):
-            self.do_whitelist(message[11:])
+            if by_oper():
+                self.do_whitelist(message[11:])
             return
 
         elif message.startswith("!blacklist "):
-            self.do_blacklist(message[11:])
+            if by_oper():
+                self.do_blacklist(message[11:])
             return
 
         elif trump_re.search(message):
@@ -162,6 +166,7 @@ class OrthoNazi(SingleServerIRCBot):
 
     def on_nicknameinuse(self, c, e):
         c.nick(c.get_nickname() + "_")
+
 
 
 if __name__ == '__main__':
