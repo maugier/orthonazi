@@ -36,7 +36,7 @@ insult_messages = [
     "Décidément, mon chat est plus doué que {1} en français, parce que « {0} »...",
     "{1} n'est pas loin de mériter une médaille pour son ineptie. « {0} » ?",
     "{1}: Maraud, faquin, butor de pied plat ridicule ! « {0} »...",
-    "Tiens, on dirait BlackGyver quand {1} parle... « {0} »",
+    "Tiens, on dirait {2} quand {1} parle... « {0} »",
     "ERREUR: {1}: Cerveau non trouvé. Pas étonnant, à le lire (« {0} »...).",
     "« {0} »... je me sens sale, rien que de lire {1}.",
     "Pitié, quelqu'un, faites taire {1}... qui pourrait sinon continuer à dire des aberrations comme « {0} »",
@@ -68,13 +68,15 @@ def get_words(message):
 
 class OrthoNazi(SingleServerIRCBot):
     def __init__(self, server_list, nick="OrthoNazi", langs=["fr_FR", "en_US"],
-                 channels=["#test"], whitelist_path=None, delay=300, **params):
+                 channels=["#test"], whitelist_path=None, delay=300, 
+                 victim="un débile profond", **params):
         super().__init__(server_list, nick, "OrthoNazi", **params)
         self.nazi_channels = channels
         self.spellers = [Speller("lang", lang) for lang in langs]
         self.rl = RateLimiter(delay)
         self.whitelist_path = whitelist_path
         self.whitelist = {nick.lower(): True}
+        self.victim = victim
         self.load()
             
     def load(self):
@@ -119,6 +121,15 @@ class OrthoNazi(SingleServerIRCBot):
 
     def on_join(self, c, e):
         self.do_whitelist(NickMask(e.source).nick)
+
+    def on_kick(self, c, e):
+        nick = e.arguments[0]
+        chan = e.target
+        if nick == c.get_nickname():
+            self.victim = NickMask(e.source).nick
+            logging.info("New revenge victim: {0}".format(self.victim))
+            c.join(chan)
+
         
     def on_nick(self, c, e):
         self.do_whitelist(e.target)
@@ -145,7 +156,7 @@ class OrthoNazi(SingleServerIRCBot):
                 logging.info("Grace time allowed to {0}".format(e.source))
                 break
 
-            reply = choice(insult_messages).format(word, NickMask(e.source).nick)
+            reply = choice(insult_messages).format(word, NickMask(e.source).nick, self.victim)
             c.privmsg(e.target, reply)
             break
 
