@@ -144,7 +144,7 @@ class OrthoNazi(SingleServerIRCBot):
                      chan.is_voiced(nick))
 
             if not allow:
-                e.privmsg(e.target, "{0}: dis-donc, tête de noeud, tu crois que je suis ton larbin ?".format(nick))
+                c.privmsg(e.target, "{0}: dis-donc, tête de noeud, tu crois que je suis ton larbin ?".format(nick))
 
             return allow
 
