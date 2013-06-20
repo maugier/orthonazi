@@ -137,7 +137,16 @@ class OrthoNazi(SingleServerIRCBot):
         message = e.arguments[0]
 
         def by_oper():
-            return self.channels[e.target].is_oper(NickMask(e.source).nick)
+            chan = self.channels[e.target]
+            nick = NickMask(e.source).nick
+            allow = (chan.is_oper(nick) or 
+                     chan.is_halfop(nick) or
+                     chan.is_voiced(nick))
+
+            if not allow:
+                e.privmsg(e.target, "{0}: dis-donc, tête de noeud, tu crois que je suis ton larbin ?".format(nick))
+
+            return allow
 
         if message.startswith("!whitelist "):
             if by_oper():
