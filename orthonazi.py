@@ -66,7 +66,7 @@ nick_re = re.compile('[^\W]+', re.UNICODE)
 word_re = re.compile('^[^\W\d_]+$', re.UNICODE)
 space_re = re.compile(r'[][(){}\s,;!?]+', re.UNICODE)
 trump_re = re.compile(r'\(.*gueule.*\)', re.UNICODE)
-onom_re = re.compile(r'([a-z])\1\1\1', re.UNICODE)
+onom_re = re.compile(r'([a-z]+)\1\1', re.UNICODE)
 
 def RateLimiter(delay):
     cache = {}
