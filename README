@@ -18,8 +18,17 @@ Create a bot script like so:
     import orthonazi
 
     servers = [('irc.server.com', 6667)]
-    bot = orthonazi.OrthoNazi(servers, channels=["#mychannel"], delay=600, whitelist_path="./whitelist.pickle")
+    bot = orthonazi.OrthoNazi(servers, channels=["#mychannel"], delay=600, whitelist_path="./whitelist.txt")
     bot.start()
 
 Refer to the source for more options. Without 'whitelist_path', the whitelist will be discarded between runs.
-Use 'delay' to change the grace time between insult messages
+Use 'delay' to change the grace time between insult messages.
+
+If you want ipv6 or SSL you have to pass the appropriate factory from the irc lib, like
+
+    import irc.connection
+    ...
+    bot = orthonazi.OrthoNazi(servers, channels, ...,
+          connect_factory = irc.connection.Factory(ipv6=true))
+
+
