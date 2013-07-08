@@ -126,7 +126,7 @@ class OrthoNazi(SingleServerIRCBot):
         self.save()
 
     def check_word(self, word):
-        return (word[0].isupper() 
+        return ((word[0].isupper() and any(x.islower() for x in word))
                 or onom_re.search(word)
                 or word.lower() in self.whitelist 
                 or any([s.check(word) for s in self.spellers]))
