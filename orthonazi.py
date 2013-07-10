@@ -103,12 +103,13 @@ def get_words(message):
 
 class OrthoNazi(SingleServerIRCBot):
     def __init__(self, server_list, nick="OrthoNazi", langs=["fr_FR", "en_US"],
-                 channels=["#test"], whitelist_path=None, delay=300, 
+                 channels=["#test"], whitelist_path=None, delay=300, trump_delay=10,
                  victim="un débile profond", **params):
         super().__init__(server_list, nick, "OrthoNazi", **params)
         self.nazi_channels = channels
         self.spellers = [Speller("lang", lang) for lang in langs]
         self.rl = RateLimiter(delay)
+        self.trump_rl = RateLimiter(trump_delay)
         self.whitelist_path = whitelist_path
         self.whitelist = {nick.lower(): True}
         self.victim = victim
@@ -197,7 +198,13 @@ class OrthoNazi(SingleServerIRCBot):
             return
 
         elif trump_re.search(message):
-            logging.info("{0} used trump card".format(e.source))
+            if self.trump_rl(e.source):
+                self.victim = NickMask(e.source).nick
+                logging.info("{0} abused trump card".format(e.source))
+                c.privmsg(e.target, "{0}: c'est bientôt fini, de me dire ta gueule à tout va ? c'est pas comme ça que tu vas relever le niveau.".format(
+                    self.victim))
+            else:
+                logging.info("{0} used trump card".format(e.source))
             return
 
         for word in get_words(message):
