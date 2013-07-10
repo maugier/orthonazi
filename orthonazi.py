@@ -182,6 +182,7 @@ class OrthoNazi(SingleServerIRCBot):
 
             if not allow:
                 c.privmsg(e.target, "{0}: dis-donc, tête de noeud, tu crois que je suis ton larbin ?".format(nick))
+                self.victim = nick
 
             return allow
 
