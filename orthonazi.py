@@ -60,6 +60,14 @@ insult_messages = [
     "« {0} »… si on installait dix mille babouins devant des machines à écrire, ils arriveraient encore a produire moins de fautes que {1}.",
     "« {0} »… Allez, courage, {1}, d'ici quelques années peut-être que la médecine moderne sera capable de réparer tes dommages cérébraux.",
     "« {0} »… {1} écrit encore plus merdiquement qu'une fosse septique défectueuse",
+    "« {0} »… Et le huitième jour, Dieu créa {1}. Pour déconner.",
+    "Bon sang {1}, la prochaine fois, préviens les gens quand tu prévois d'écrire aussi mal, j'ai failli m'étouffer.",
+    "Il paraît qu'il existe un monde parralèle où le mot « {0} » existe, et un autre où {1} est intelligent.",
+    "Allez, un peu de pédagogie. Laissons {1} se relire et se corriger",
+    "« {0} »… Qui a encore une fois laissé rentrer {1} sur le chan ?",
+    "« {0} »… Salut {1}, je suis ton futur employeur, et je ne t'embaucherai jamais",
+    "{1}… Je ne sais pas si « {0} » existe dans ton monde imaginaire, mais dans le monde réel ce n'est pas le cas",
+    "« {0} »… Regardez ! {1} tente de communiquer avec nous, c'est mignon !",
     ]
 
 nick_re = re.compile('[^\W]+', re.UNICODE)
