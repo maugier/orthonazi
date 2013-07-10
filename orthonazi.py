@@ -62,12 +62,20 @@ insult_messages = [
     "« {0} »… {1} écrit encore plus merdiquement qu'une fosse septique défectueuse",
     "« {0} »… Et le huitième jour, Dieu créa {1}. Pour déconner.",
     "Bon sang {1}, la prochaine fois, préviens les gens quand tu prévois d'écrire aussi mal, j'ai failli m'étouffer.",
-    "Il paraît qu'il existe un monde parralèle où le mot « {0} » existe, et un autre où {1} est intelligent.",
+    "Il paraît qu'il existe un monde parallèle où le mot « {0} » existe, et un autre où {1} est intelligent.",
     "Allez, un peu de pédagogie. Laissons {1} se relire et se corriger",
     "« {0} »… Qui a encore une fois laissé rentrer {1} sur le chan ?",
     "« {0} »… Salut {1}, je suis ton futur employeur, et je ne t'embaucherai jamais",
     "{1}… Je ne sais pas si « {0} » existe dans ton monde imaginaire, mais dans le monde réel ce n'est pas le cas",
     "« {0} »… Regardez ! {1} tente de communiquer avec nous, c'est mignon !",
+    "« {0} »… D'aucuns bougent comme Jagger, {1} préfère écrire comme Ducobu",
+    "« {0} »… Ton truc c'était la gym {1}, avoue.",
+    "« {0} »… J'ai l'impression de corriger {1} sans arrêt, et pourtant j'ai un cooldown.",
+    "Non, {1}, « {0} » n'existe pas. Et non, je ne la fermerai pas.",
+    "« {0} »… {1}, je me lève, et je te bouscule, et tu écris super mal, comme d'habitude.",
+    "« {0} »… On dirait que {1} a pris ses cours de français sur Langochat.",
+    "« {0} »… Tu sais, {1}, si le français n'est pas ta langue maternelle, il fallait nous le dire.",
+    "Il y a les gens normaux qui écrivent correctement, et puis il y à {1} qui nous sort « {0} ». Comme quoi on tolère n'importe qui ici.", 
     ]
 
 nick_re = re.compile('[^\W]+', re.UNICODE)
