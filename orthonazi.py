@@ -51,7 +51,7 @@ insult_messages = [
     "« {0} »… {1}, on t'a déja félicité pour ta culture ? Eh ben on t'a menti.",
     "« {0} »… je parie que pour halloween, {1} se déguise en dictionnaire.",
     "« {0} »… quand on lit {1}, on se dit qu'il doit forcément lui manquer quelques doigts. Au moins 10, en fait.",
-    "« {0} »… Vous savez comment les écoliers arrivent à passer le bac ? en ne s'appelant pas {1}.",
+    "« {0} »… Vous savez comment les écoliers arrivent à passer le bac ? En ne s'appelant pas {1}.",
     "« {0} »… il y a moins de confiture dans les placards de ma grand-mère que dans la boîte cranienne de {1}",
     "« {0} »… {1}, tu écris tellement mal qu'on pourrait croire que tu te sers d'une manette de XBox à la place d'un clavier",
     "« {0} »… au moins, quand on voit à quel point {1} est stupide, on en oublie sa laideur",
