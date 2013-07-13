@@ -75,7 +75,7 @@ insult_messages = [
     "« {0} »… {1}, je me lève, et je te bouscule, et tu écris super mal, comme d'habitude.",
     "« {0} »… On dirait que {1} a pris ses cours de français sur Langochat.",
     "« {0} »… Tu sais, {1}, si le français n'est pas ta langue maternelle, il fallait nous le dire.",
-    "Il y a les gens normaux qui écrivent correctement, et puis il y à {1} qui nous sort « {0} ». Comme quoi on tolère n'importe qui ici.", 
+    "Il y a les gens normaux qui écrivent correctement, et puis il y a {1} qui nous sort « {0} ». Comme quoi on tolère n'importe qui ici.", 
     ]
 
 nick_re = re.compile('[^\W]+', re.UNICODE)
