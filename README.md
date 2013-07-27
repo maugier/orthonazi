@@ -1,15 +1,14 @@
+#OrthoNazi 0.1
 
-OrthoNazi 0.1
-=============
 
 An IRC Bot to insult people who make orthography mistakes
 
-1.) Requirements:
+##Requirements:
 
   - irc (http://bitbucket.org/jaraco/irc/)
   - aspell (http://http://0x80.pl/proj/aspell-python)
 
-2.) Usage:
+##Usage:
 
 Create a bot script like so:
 
