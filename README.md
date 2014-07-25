@@ -1,15 +1,14 @@
+#OrthoNazi 0.1
 
-OrthoNazi 0.1
-=============
 
 An IRC Bot to insult people who make orthography mistakes
 
-1.) Requirements:
+##Requirements:
 
   - irc (http://bitbucket.org/jaraco/irc/)
   - aspell (http://http://0x80.pl/proj/aspell-python)
 
-2.) Usage:
+##Usage:
 
 Create a bot script like so:
 
@@ -23,6 +22,8 @@ Create a bot script like so:
 
 Refer to the source for more options. Without 'whitelist_path', the whitelist will be discarded between runs.
 Use 'delay' to change the grace time between insult messages.
+
+Hardcoded insults are in french, edit the main script to your desire. {0} will be expanded to the name of the offender, {1} to the offending word, and {2} to the current target, which is whoever kicked the bot last, or some generic string if it was never kicked (can be changed by the 'victim' argument when creating the bot object).
 
 If you want ipv6 or SSL you have to pass the appropriate factory from the irc lib, like
 
