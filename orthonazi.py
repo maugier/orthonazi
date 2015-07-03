@@ -138,8 +138,11 @@ class OrthoNazi(SingleServerIRCBot):
 
     def do_blacklist(self, msg):
         for word in get_words(msg):
-            del self.whitelist[word.lower()]
-            logging.info("Removing {0} from whitelist".format(word))
+            try:
+                del self.whitelist[word.lower()]
+                logging.info("Removing {0} from whitelist".format(word))
+            except KeyError:
+                pass
         self.save()
 
     def check_word(self, word):
