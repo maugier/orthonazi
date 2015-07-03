@@ -160,7 +160,11 @@ class OrthoNazi(SingleServerIRCBot):
             self.do_whitelist(nick)
 
     def on_join(self, c, e):
+        nick = NickMask(e.source).nick
         self.do_whitelist(NickMask(e.source).nick)
+        if nick == self.victim:
+            c.privmsg(e.target, "Tiens, la tête de noeud de service débarque.")
+            
 
     def on_kick(self, c, e):
         nick = e.arguments[0]
